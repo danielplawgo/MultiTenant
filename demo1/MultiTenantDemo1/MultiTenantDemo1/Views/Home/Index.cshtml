@@ -1,0 +1,23 @@
+﻿@model MultiTenantDemo1.Models.Home.IndexViewModel
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">MultiTenant Demo 1</h1>
+    <p>Jak zbudować <a href="https://docs.microsoft.com/aspnet/core">aplikację multitenant</a>.</p>
+</div>
+
+<div class="row">
+    <h2>Lista tenantów:</h2>
+</div>
+
+<div class="row">
+    <ul>
+        @foreach (var tenant in Model.Tenants)
+        {
+            <li>@Html.ActionLink(tenant.Identifier, "Index", "Tenants", new {tenant = tenant.Identifier})</li>
+        }
+    </ul>
+</div>

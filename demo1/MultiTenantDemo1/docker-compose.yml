@@ -1,0 +1,17 @@
+version: "3.9"
+services:
+    multitenant.demo1.web:
+        build:
+          context: .
+          dockerfile: MultiTenantDemo1/Dockerfile
+        ports:
+            - "8000:80"
+        depends_on:
+            - multitenant.demo1.db
+    multitenant.demo1.db:
+        image: "mcr.microsoft.com/mssql/server:2019-latest"
+        environment:
+            SA_PASSWORD: "Your_password123"
+            ACCEPT_EULA: "Y"
+        ports:
+            - "1433:1433"
