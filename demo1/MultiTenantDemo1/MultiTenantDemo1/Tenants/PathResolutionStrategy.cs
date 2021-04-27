@@ -28,14 +28,7 @@ namespace MultiTenantDemo1.Tenants
                 return null;
             }
 
-            var tenant = _httpContextAccessor.HttpContext?.Request.RouteValues["tenant"]?.ToString();
-
-            if (tenant == null || tenant == "none")
-            {
-                return null;
-            }
-
-            return tenant;
+            return _httpContextAccessor.HttpContext?.Request.RouteValues["tenant"]?.ToString();
         }
     }
 }
