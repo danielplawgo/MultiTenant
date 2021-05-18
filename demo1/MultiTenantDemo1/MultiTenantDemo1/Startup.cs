@@ -34,7 +34,7 @@ namespace MultiTenantDemo1
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddDbContext<ApplicationDbContext>(async (s, options) =>
+            services.AddDbContext<ApplicationDbContext>((s, options) =>
                 options.UseSqlServer(s.GetRequiredService<IConnectionStringBuilder>().BuildAsync().Result));
 
             services.AddDatabaseDeveloperPageExceptionFilter();
